@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  ai-image:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: ai-image-system
+    volumes:
+      - ../../ai-image-data/input:/app/data/input
+      - ../../ai-image-data/output:/app/data/output
+      - ../../ai-image-data/work:/app/data/work
+      - ../../ai-image-data/db:/app/db
+      - ../../ai-image-data/cache:/app/cache
+    environment:
+      - TZ=Asia/Tokyo
+    restart: "no"
